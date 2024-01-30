@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -14,6 +15,8 @@ int main ()
 
   cin >> n;
   //n = 10;
+
+  srand(time(NULL));  // зерно генератора случ. чисел - текущее время
 
   // заполняем массив и выводим его в первый раз
   for (int i = 0; i < n; i++)
