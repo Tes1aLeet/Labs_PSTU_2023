@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void move(int* a, int position, int size)
+void move_left(int* a, int position, int size)
 {
   for (int i = position; i < size - 1; i++)
   {
@@ -41,7 +41,7 @@ int main()
   {
     if (a[i] % 2 == 1)
     {
-     move(a, i, SIZE);
+     move_left(a, i, SIZE);
      //print(a, SIZE);
      counter++;
      i--; 
