@@ -3,7 +3,7 @@
 
 using namespace std;
 
-double get_y(double x)  // получить значение функции в точке x
+double get_value(double x)  // получить значение функции в точке x
 {
   // y = arcsin^2(x) - sin(x) - 1
   return ( 3 * sin(x) * sqrt(x) ) + ( 0.35 * x ) - 3.8; 
@@ -30,9 +30,9 @@ int main()
   {
     intervalMedian = (intervalEnd + intervalStart) / 2;
 
-    Fs = get_y(intervalStart);
-    Fe = get_y(intervalEnd);
-    Fm = get_y(intervalMedian);
+    Fs = get_value(intervalStart);
+    Fe = get_value(intervalEnd);
+    Fm = get_value(intervalMedian);
 
     if(Fs * Fm < 0)
     {
