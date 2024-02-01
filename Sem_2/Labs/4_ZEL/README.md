@@ -92,19 +92,16 @@ int main ()
 
 # 2.2 Блок-схема программы
 
-<image src ="block_diagram.png">
+<image src="block_diagram.png">
 
 # 3 Тесты
 
 ### Пример 1
 
-<image src = "test_1.png">
+<image src="test_1.png">
 
 ### Пример 2
 
-<image src = "test_2.png">
 
 ### Пример 3
-
-<image src = "test_3.png">
 
