@@ -2,62 +2,80 @@
 
 using namespace std;
 
-// вставить диск, размером n, в конец массива a, с размером size 
-// если свободного места нет - возвращает false
-bool push_back(int* a, int n, const int size)
-{:
-  for(int i = size - 1; i >= 0; i--)
+// высота башен
+const int SIZE = 3;
+
+int rod1[SIZE] = {};
+int rod2[SIZE] = {};
+int rod3[SIZE] = {};
+
+void print(int* a, int* b, int* c, const int size);
+
+void move_disk(int n, int* from, int* to, const int size);
+
+void hanoi_tower(int n, int* from, int* to, int* aux, const int size);
+
+int main()
+{
+
+  for(int i = 0; i < SIZE; i++)
   {
-    if(a[i] == 0)
-    {
-      a[i] = n;
-      return true;
-    }
+    rod1[i] = SIZE - i;
   }
   
-  return false;
-}
+  print(rod1, rod2, rod3, SIZE);
+  
+  hanoi_tower(SIZE, rod1, rod2, rod3, SIZE);
 
-// убрать самый маленький диск
-// false - если массив содержит только нули
-bool pop_back(int* a, const int size)
-{
-  for(int i = 0; i < size; i++)
-  {
-    if(a[i] != 0)
-    {
-      a[i] = 0;
-      return true;
-    }
-  }
-
-  return false;
+  return 0;
 }
 
 void print(int* a, int* b, int* c, int size)
 {
-  for(int i = 0; i < size; i++)
+  for(int i = size - 1; i >= 0; i--)
   {
     cout << a[i] << "  " << b[i] << "  " << c[i] << endl;
   }
+  cout << endl;
 }
 
-int main()
+void move_disk(int n, int* from, int* to, const int size)
 {
-  const int SIZE = 3;
-
-  int a[SIZE] = {};
-  int b[SIZE] = {};
-  int c[SIZE] = {};
-
-  for(int i = 0; i < SIZE; i++)
+  for(int i = 0; i < size; i++)
   {
-    a[i] = i + 1;
+    // ищем свободное место
+    if(to[i] == 0)
+    {
+      to[i] = n + 1;
+
+      // удаляем то, что передвинули
+      for(int j = size - 1; j >= 0; j--)
+      {
+        if(from[j] == n + 1)
+        {
+          from[j] = 0;
+        }
+      }
+
+      print(rod1, rod2, rod3, size);
+
+      break;
+    }
+  }
+  
+
+}
+
+void hanoi_tower(int n, int* from, int* to, int* aux, const int size)
+{
+  if(n == 0)
+  {
+    return;
   }
 
+  hanoi_tower(n - 1, from, aux, to, size);
 
+  move_disk(n - 1, from, to, size);
 
-  print(a, b, c, SIZE);
-
-  return 0;
+  hanoi_tower(n - 1, aux, to, from, size);
 }
