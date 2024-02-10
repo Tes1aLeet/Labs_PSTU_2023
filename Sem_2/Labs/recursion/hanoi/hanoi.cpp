@@ -17,7 +17,6 @@ void hanoi_tower(int n, int* from, int* to, int* aux, const int size);
 
 int main()
 {
-
   for(int i = 0; i < SIZE; i++)
   {
     rod1[i] = SIZE - i;
@@ -62,8 +61,6 @@ void move_disk(int n, int* from, int* to, const int size)
       break;
     }
   }
-  
-
 }
 
 void hanoi_tower(int n, int* from, int* to, int* aux, const int size)
