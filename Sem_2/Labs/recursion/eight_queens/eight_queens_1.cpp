@@ -35,6 +35,7 @@ int main()
   return 0;
 }
 
+// выводит игровое поле, с ферзями из массива a, размером size
 // если массив a не отсортирован, работает некорректно
 void print(int* a, const int size)
 {
@@ -103,7 +104,7 @@ bool place_queens(int* a, int current_line, const int size)
     return true;
   }
   
-  // i - номер колонны, в которую пробуем ставить ферзя
+  // i - номер столбца, в которую пробуем ставить ферзя
   for(int i = 0; i < size; i++)
   {
     // если в точке (current_line + 1, i + 1) на доске можно поставить ферзя
@@ -124,6 +125,7 @@ bool place_queens(int* a, int current_line, const int size)
       a[current_line] = -1;
     }
   }
-
+  
+  // если невозможно заполнить доску, при текущей расстановке, возвращаем false
   return false;
 }
