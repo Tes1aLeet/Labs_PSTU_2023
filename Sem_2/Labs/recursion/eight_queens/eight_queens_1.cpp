@@ -3,11 +3,9 @@
 
 using namespace std;
 
-void print(char* a, const int size);
+void print(int* a, const int size);
 
-void put_on_field(char* field, int pos, const int size);
-
-bool conflicts(int* a, int pos, int n, const int size);
+bool conflicts(int* a, int pos, const int size);
 
 bool place_queens(int* a, char* field, int current, const int size);
 
@@ -15,74 +13,79 @@ int main()
 {
   const int SIZE = 8;
 
+  // массив позиций ферзей (индекс - номер строки, значение - позиция (порядковый номер - 1, если считать фигуры слева направо сверху вниз) ) 
+  // всегда должен быть упорядочен от меньшего к большему (от самого маленького значения позиции к самому большому)
+  // если значение = -1, то клетка пустая
   int queens[SIZE] = {};
-  char field[SIZE][SIZE] = {};
 
-  for(int i = 0; i < SIZE * SIZE; i++)
+  for(int i = 1; i < SIZE; i++)
   {
-    field[i / SIZE][i % SIZE] = '-';
+    queens[i] = -1;
   }
 
   srand(time(NULL));
-  queens[0] = (rand() % SIZE) * SIZE;
-  put_on_field(*field, queens[0], SIZE);
+  queens[0] = rand() % SIZE;
 
-  print(*field, SIZE);
-  place_queens(queens, *field, 0, SIZE);
-  print(*field, SIZE);
+  print(queens, SIZE);
 
   return 0;
 }
 
-
-void print(char* a, const int size)
+// если массив a не отсортирован, работает некорректно
+void print(int* a, const int size)
 {
+  int current_queen = 0;
   for(int i = 0; i < size; i++)
   {
     for(int j = 0; j < size; j++)
     {
-      cout << a[(i * size) + j] << ' ';
+      if(a[current_queen] == j + (i * size) )
+      {
+        cout << '*' << ' ';
+        current_queen++;
+      }
+      else
+      {
+        cout << '_' << ' ';
+      }
     }
     cout << endl;
   }
   cout << endl;
 }
 
-
-void put_on_field(char* field, int pos, const int size)
-{
-  field[pos] = '@';
-}
-
-
 // true:  если в массиве a, размером size, в диапазоне [0;n] есть ферзь, который конфликтует с ферзем, с позицией pos
 // false: если конфликтующих ферзей нет
-bool conflicts(int* a, int pos, int n, const int size)
+bool conflicts(int* a, int pos, const int size)
 {
   int a_pos, a_col, a_row, row, col;
  
-  row = pos / size;
-  col = pos % size;
+  row = pos / size; // строка ферзя, конфликты с которым мы ищем
+  col = pos % size; // его столбец
   
-  for(int i = 0; i <= n; i++)
+  for(int i = 0; i <= size; i++)
   {
-    if(pos == a[i])
+    if(a[i] == -1) // если клетка пустая, ферзей больше нету, следовательно конфилктов не будет. прерываем цикл
+    {
+      break;
+    }
+    else if(a[i] == pos) // если ищем конфликты ферзя самим с собой, пропускаем 1 итерацию цикла
     {
       continue;
     }
 
-    a_pos = a[i];
-    a_row = a_pos / size;
-    a_col = a_pos % size;
+    a_pos = a[i];         // позиция ферзя, уже стоящего на поле
+    a_row = a_pos / size; // его строка
+    a_col = a_pos % size; // его столбец
 
     if(a_row == row || a_col == col) // если в одной строке или в одном столбце
     {
-      //cout << "conflict: (" << a_row + 1 << "; " << a_col + 1 << ") and (" << row + 1 << "; " << col + 1 << ") a_pos: " << a_pos << " pos: " << pos << endl;
+      cout << "conflict: (" << a_row + 1 << "; " << a_col + 1 << ") and (" << row + 1 << "; " << col + 1 << ") a_pos: " << a_pos << " pos: " << pos << endl;
       return true;
     }
-    if(a_col - col == a_row - row || a_col - col == row - a_row)  // если на диагоналях
+    if(a_col - col == a_row - row || a_col - col == row - a_row)  // если на одной диагонали
     {
-      //cout << "conflict: (" << a_row + 1 << "; " << a_col + 1 << ") and (" << row + 1 << "; " << col + 1 << ") a_pos: " << a_pos << " pos: " << pos << endl;
+      cout << "conflict: (" << a_row + 1 << "; " << a_col + 1 << ") and (" << row + 1 << "; " << col + 1 << ") a_pos: " << a_pos << " pos: " << pos << endl;
       return true;
     }
   }
@@ -91,27 +94,20 @@ bool conflicts(int* a, int pos, int n, const int size)
 }
 
 
-bool place_queens(int* a, char* field, int current, const int size)
+bool place_queens(int* a, int current_line, const int size)
 {
-  static int pos;
-  if(current == size - 1)
+  if(current_line == 0)
   {
     return true;
   }
+  
   for(int i = 0; i < size; i++)
   {
-    pos = (i * size) + current;
-    if(!conflicts(a, pos + 1, current, size))
-    {
-      if(place_queens(a, field, current + 1, size))
-      {
-        a[current] = pos + 1;
-        put_on_field(field, pos, size);
-        print(field, size);
-        cin.get();
-      }
-    }
+    
   }
 
   return false;
 }
+
+
+// доходим до самой нижней строки
