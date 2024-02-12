@@ -26,5 +26,18 @@ int main()
     }
   } 
 
+  in.close();
+  in.open("F2");
+
+  int counter = 0;
+  char c;
+
+  while(in.get(c))
+  {
+    counter++;
+  }
+
+  cout << "символов в файле F2: " << counter << endl;
+
   return 0;
 }
