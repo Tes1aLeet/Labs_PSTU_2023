@@ -11,7 +11,7 @@ bool place_queens(int* a, int current_line, const int size);
 
 int main()
 {
-  const int SIZE = 2;
+  const int SIZE = 8;
 
   // массив позиций ферзей (индекс - номер строки, значение - позиция (порядковый номер - 1, если считать фигуры слева направо сверху вниз) ) 
   // массив всегда должен быть упорядочен от меньшего к большему (от самого маленького значения позиции к самому большому)
@@ -58,7 +58,7 @@ void print(int* a, const int size)
   cout << endl;
 }
 
-// true:  если в массиве a, размером size, в диапазоне [0;n] есть ферзь, который конфликтует с ферзем, с позицией pos
+// true:  если в массиве a, размером size, есть ферзь, который конфликтует с ферзем, с позицией pos
 // false: если конфликтующих ферзей нет
 bool conflicts(int* a, int pos, const int size)
 {
@@ -98,7 +98,7 @@ bool conflicts(int* a, int pos, const int size)
 // false: если невозможно
 bool place_queens(int* a, int current_line, const int size)
 {
-  if(current_line >= size) // если дошли до самой нижней
+  if(current_line == size) // если все ферзи расставлены
   {
     return true;
   }
