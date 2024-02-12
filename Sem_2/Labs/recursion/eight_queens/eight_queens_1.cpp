@@ -7,7 +7,7 @@ void print(int* a, const int size);
 
 bool conflicts(int* a, int pos, const int size);
 
-bool place_queens(int* a, char* field, int current, const int size);
+bool place_queens(int* a, int current, const int size);
 
 int main()
 {
@@ -25,6 +25,8 @@ int main()
 
   srand(time(NULL));
   queens[0] = rand() % SIZE;
+
+  place_queens(queens, SIZE - 1, SIZE);
 
   print(queens, SIZE);
 
@@ -65,7 +67,7 @@ bool conflicts(int* a, int pos, const int size)
   
   for(int i = 0; i <= size; i++)
   {
-    if(a[i] == -1) // если клетка пустая, ферзей больше нету, следовательно конфилктов не будет. прерываем цикл
+    if(a[i] == -1) // если клетка пустая, то ферзей больше нету, следовательно конфилктов не будет. прерываем цикл
     {
       break;
     }
@@ -103,7 +105,18 @@ bool place_queens(int* a, int current_line, const int size)
   
   for(int i = 0; i < size; i++)
   {
-    
+    if(place_queens(a, current_line - 1, size)) 
+    {
+      if(!conflicts(a, (current_line * size) + i, size))
+      {
+        a[current_line] = (current_line * size) + i;
+        return true;
+      }
+    }
+    else
+    {
+      a[(current_line * size) + i] = -1;
+    }
   }
 
   return false;
