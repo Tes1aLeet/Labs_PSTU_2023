@@ -118,7 +118,7 @@ bool place_queens(int* a, int current_line, const int size)
   // i - номер столбца, в которую пробуем ставить ферзя
   for(int i = 0; i < size; i++)
   {
-    // если в точке (current_line + 1, i + 1) на доске можно поставить ферзя
+    // если в клетке (current_line + 1, i + 1) на доске можно поставить ферзя
     if(!conflicts(a, (current_line * size) + i, size))
     {
       // то ставим ферзя
