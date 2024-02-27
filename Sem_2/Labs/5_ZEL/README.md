@@ -98,4 +98,4 @@ int main()
 
 <image src="test_1.png">
 <image src="test_2.png">
-<image src="test_3.png">>
+<image src="test_3.png">
