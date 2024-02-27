@@ -53,6 +53,8 @@ int main()
 
 # 2.2 Блок-схема
 
+<image src="block_diagram.png">
+
 # 3 Тесты
 
 <image src="test.png">
