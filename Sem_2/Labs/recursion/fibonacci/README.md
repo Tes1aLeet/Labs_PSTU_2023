@@ -34,3 +34,5 @@ int main()
   return 0;
 }
 ```
+
+<image src="test.png">
