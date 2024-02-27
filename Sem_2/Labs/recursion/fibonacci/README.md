@@ -35,4 +35,6 @@ int main()
 }
 ```
 
+# Тесты
+
 <image src="test.png">
