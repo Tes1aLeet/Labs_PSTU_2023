@@ -42,3 +42,7 @@ int main()
   return 0;
 }
 ```
+
+# Тесты
+
+<image src="test.png">
