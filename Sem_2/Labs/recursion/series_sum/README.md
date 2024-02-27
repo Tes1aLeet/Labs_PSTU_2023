@@ -17,6 +17,8 @@
 
 <img src="expression.png">
 
+# 2.1 Код программы
+
 ```c++
 // вариант 3
 // S = x^3 / 3! + ... + (-1)^n * (x^(2n+1) / (2n+1)!)
@@ -80,6 +82,10 @@ int main()
 }
 ```
 
-# Тесты
+# 2.2 Блок-схема
+
+<image src="block_diagram.png">
+
+# 3 Тесты
 
 <image src="test.png">
