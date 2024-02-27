@@ -141,3 +141,8 @@ bool place_queens(int* a, int current_line, const int size)
   return false;
 }
 ```
+
+# Тесты
+
+<image src="test_1.png">
+<image src="test_2.png">
