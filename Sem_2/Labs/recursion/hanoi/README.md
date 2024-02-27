@@ -89,3 +89,7 @@ void hanoi_tower(int n, int* from, int* to, int* aux, const int size)
   hanoi_tower(n - 1, aux, to, from, size);
 }
 ```
+
+# Тесты
+
+<image src="test.png">
