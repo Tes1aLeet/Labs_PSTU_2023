@@ -71,3 +71,39 @@ int main()
 # 3 Тесты
 
 <image src="test.png">
+
+F2:
+
+```
+gradual
+art
+gaffe
+island
+partnership
+objective
+trace
+winter
+area
+underline
+even
+agenda
+electron
+approval
+designer
+steak
+manner
+gift
+cause
+fox
+temperature
+attract
+wilderness
+```
+
+F1:
+
+```
+partnership
+area
+agenda
+```
