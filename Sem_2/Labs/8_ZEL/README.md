@@ -382,7 +382,9 @@ int main()
 
 # 3 Тесты
 
-<image src="test.png">
+<image src="test_1.png">
+<image src="test_2.png">
+<image src="test_3.png">
 
 F1
 ```
