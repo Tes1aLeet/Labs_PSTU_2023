@@ -52,61 +52,6 @@ void list::push(node* n)
   }
 }
 
-/*
-
-  if(index == 1)
-  {
-    start_of_deletion = list[index+k]
-  }
-
-  if(index + k - 1 == size)
-  {
-    if(index == size)
-    {
-      
-    }
-    if(k == size)
-    {
-      
-    }
-  }
-
-
-  Если по середине(не касается краёв списка)
-
-  for(int i = 1; i < k; i++)
-  {
-    temp2 = temp;
-    temp = temp->next;
-    
-    delete temp2;
-  }
-
-  Если касается краёв слева(index == 1)
-
-  for(int i = 1; i < k; i++)
-  {
-    temp2 = temp;
-    temp = temp->next;
-
-    delete temp2;
-  }
-  tail = temp;
-
-  Если касается краёв справа(index + k - 1 == size)
-
-  node* start_of_deletion = list[temp - 1];
-  for(int i = 1; i < k; i++)
-  {
-    temp2 = temp;
-    temp = temp->next;
-
-    delete temp2;
-  }
-
-  head = start_of_deletion;
-
-*/
 
 void list::remove(int index, int k)
 {
